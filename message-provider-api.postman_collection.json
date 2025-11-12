@@ -1,0 +1,2046 @@
+{
+	"info": {
+		"_postman_id": "6d26f2ab-810a-43c4-af6e-347215845682",
+		"name": "message-provider-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14705254"
+	},
+	"item": [
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "get account info",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/account/info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set display name for user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/account/set-display-name",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"set-display-name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set status for user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/account/set-status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"set-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Abd\",\r\n    \"email\": \"abd@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"abd@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start whats-app session",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/start-whatsapp-session",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"startWhatsAppSession"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe user to plan",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plan_id\": \"67cfe8b7550c8d3ff1fc8897\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/subscribe-plan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"subscribe-plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "terminate whats-app session",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/terminate-whatsapp-session",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"terminateWhatsAppSession"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get qr user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/qr",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"qr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restart whats-app session",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/restart-whatsapp-session",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"restartWhatsAppSession"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat",
+			"item": [
+				{
+					"name": "get all chat for all users",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/chat/get-all-chats-by-phone",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"get-all-chats-by-phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all messages for user by phone number",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\" : \"972598045064\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/get-all-message-by-phone",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"get-all-message-by-phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send message to user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\": \"972598045064\",\r\n    \"caption\": \"Hello!\",\r\n    \"template_id\": \"67cec858c36c31082d44ac13\",\r\n    \"variables\": {\r\n        \"name\": \"عبد الفتاح سالم\",\r\n        \"order_id\": \"12345\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/send-message",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"send-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send image to user from URL",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\": \"972598045064\",\r\n    \"caption\": \"Hello!\",\r\n    \"template_id\": \"67cec858c36c31082d44ac13\",\r\n    \"variables\": {\r\n        \"name\": \"عبدالفتاح سالم\",\r\n        \"order_id\": \"12345\"\r\n    },\r\n    \"image\": \"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/send-image-url",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"send-image-url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove message",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\" : \"972598045064\",\r\n    \"message_id\": \"true_972598045064@c.us_A95C193AEA6F5A8C892B7EB1B52BC991\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/remove-message",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"remove-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send file to user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone_number",
+									"value": "972598045064",
+									"type": "text"
+								},
+								{
+									"key": "caption",
+									"value": "This is caption",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/hp/Desktop/logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/send-file",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"send-file"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send location to user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\": \"972598045064\",\r\n    \"caption\": \"This is caption\",\r\n    \"lat\": \"0\",\r\n    \"long\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/send-location",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"send-location"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact",
+			"item": [
+				{
+					"name": "get all contacts for user by phone number",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/contact/get-contacts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact",
+								"get-contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get contact by phone number",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\": \"972598045064\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/contact/get-contact-by-phone",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact",
+								"get-contact-by-phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate if number using whats-app",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/contact/validate-number-user-whats-app",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact",
+								"validate-number-user-whats-app"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save all previous contact",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/contact/save-previous-contact",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact",
+								"save-previous-contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save new contact",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_number\": \"970598045046\",\r\n    \"name\": \"John Doe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/contact/save-new-contact",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact",
+								"save-new-contact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "plan",
+			"item": [
+				{
+					"name": "get all plans",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/plan/get-all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"plan",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Plan",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"plan name\",\r\n    \"description\": \"This is description\",\r\n    \"features\": [\r\n        \"Feature 1\",\r\n        \"Feature 2\"\r\n    ],\r\n    \"price\": 100,\r\n    \"duration\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/plan/add-plan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"plan",
+								"add-plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Plan",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"67ceaf18c042713b6c3d5b2d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/plan/get-plan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"plan",
+								"get-plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete plan",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"67ceaf18c042713b6c3d5b2d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/plan/delete-plan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"plan",
+								"delete-plan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auto replay",
+			"item": [
+				{
+					"name": "Create a new auto-reply",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//     \"userId\": \"65f7a8d5b1234567890abcd\",\r\n//     \"triggers\": [\r\n//         \"send logo\",\r\n//         \"company logo\"\r\n//     ],\r\n//     \"responseType\": \"image\",\r\n//     \"responseContent\": \"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png\",\r\n//     \"delay\": 0,\r\n//     \"isActive\": true\r\n// }\r\n\r\n{\r\n  \"userId\": \"65f7a8d5b1234567890abcd\",\r\n  \"triggers\": [\"hello\", \"hi\", \"hey\"],\r\n  \"responseType\": \"text\",\r\n  \"responseContent\": \"Hello! How can I assist you today?\",\r\n  \"delay\": 2,\r\n  \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/auto-reply/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"auto-reply",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all auto-replies for a user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"triggers\": [\r\n        \"hello\",\r\n        \"hi\",\r\n        \"hey\"\r\n    ],\r\n    \"responseType\": \"text\",\r\n    \"responseContent\": \"Hello! How can I assist you today?\",\r\n    \"delay\": 2,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/auto-reply/get-all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"auto-reply",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an auto-reply",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"67ced533a156ce7a971443de\",\r\n    \"triggers\": [\r\n        \"hello\"\r\n    ],\r\n    \"responseType\": \"text\",\r\n    \"responseContent\": \"Hello! How can I assist you?\",\r\n    \"delay\": 2,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/auto-reply/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"auto-reply",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an auto-reply",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"67ced533a156ce7a971443de\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/auto-reply/delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"auto-reply",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Template message",
+			"item": [
+				{
+					"name": "get all template messages for user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/template-message/get-all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"template-message",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save new template message",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Order Confirmation\",\r\n    \"content\": \"Hello {{name}}, your order #{{order_id}} is confirmed!\",\r\n    \"variables\": [\r\n        \"name\",\r\n        \"order_id\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/template-message/save-new-template-message",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"template-message",
+								"save-new-template-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update template message by id",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Order Confirmation 1\",\r\n    \"content\": \"مرحبا {{name}}, رقم الطلب الخاص بك #{{order_id}} تم تأكيده\",\r\n    \"variables\": [\r\n        \"name\",\r\n        \"order_id\"\r\n    ],\r\n    \"template_message_id\" : \"67cec858c36c31082d44ac13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/template-message/update-template-message",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"template-message",
+								"update-template-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get template message by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"template_message_id\": \"67cec504484024a38d888f35\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/template-message/get-template-message",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"template-message",
+								"get-template-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete template message by id",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"template_message_id\": \"67cec504484024a38d888f35\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/template-message/delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"template-message",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "group",
+			"item": [
+				{
+					"name": "get all groups for user",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/get-groups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"get-groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get group by id",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/get-group",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"get-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get group messages",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/get-group-messages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"get-group-messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send message to group",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message_id\": \"0\",\r\n    \"id\": \"0\",\r\n    \"message\": \"Test message\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/group/send-message-group",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"send-message-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send image to group from URL",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/send-image-group-url",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"send-image-group-url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send location to group",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/send-location-group",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"send-location-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create group",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/create-group",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"create-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit group info",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/edit-group-info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"edit-group-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove participant from group",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/remove-participants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"remove-participants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add participant to group",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/add-participants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"add-participants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "leave group",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/leave-group",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"leave-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete group",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "{{user_id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-instance-secret",
+								"value": "{{user_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/group/delete-group",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"delete-group"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "api_secret",
+			"value": "1kwQTz8Kkc2KWrrUvBvBSkiEZ7RCEQ"
+		},
+		{
+			"key": "user_secret",
+			"value": "wpp.r6j5jp4qc54570e44gaer"
+		},
+		{
+			"key": "user_id",
+			"value": "67cd82aefea68a0ee5509169"
+		}
+	]
+}

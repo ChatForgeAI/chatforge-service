@@ -1,0 +1,7 @@
+node_modules/
+.wwebjs_auth/**
+.wwebjs_cache/**
+.env
+dist/
+#// ignore storage folder and all files in it
+storage/
