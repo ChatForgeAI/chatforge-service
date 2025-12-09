@@ -1,4 +1,4 @@
-let {clientsList} = require("../services/whats_app_service/whatsapp_client.js");
+let { clientsList } = require("../services/whats_app_service/whatsapp_client.js");
 const errorResponse = require("../utils/response_handel/error_handeler");
 
 
@@ -13,14 +13,14 @@ const validateWhatsAppSession = async (req, res, next) => {
         }
 
         const session = clientsList.find(
-            (client) => client.session_id == session_id && client.session_secret == session_secret);
+            (client) => client.instance_id == session_id && client.session_secret == session_secret);
 
         if (!session) {
             return errorResponse(res, "Client not found", 404, "Client not found")
         }
         req.body.whatsAppSession = session;
         return next()
-            
+
     } catch (e) {
         return errorResponse(res, e.message, 500, "Client not found")
     }

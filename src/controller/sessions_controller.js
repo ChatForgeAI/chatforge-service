@@ -1,5 +1,4 @@
 const { createSession } = require("../services/whats_app_service/whatsapp_client.js");
-const User = require('../models/user_model.js');
 const WhatsAppSession = require('../models/whatsaapp_session_model.js');
 const errorResponse = require("../utils/response_handel/error_handeler.js");
 const successResponse = require("../utils/response_handel/success_handeler.js");
@@ -28,20 +27,6 @@ exports.startWhatsAppSession = async (req, res) => {
             return errorResponse(res, "Session name already used", 400, "Session name already used");
         }
 
-        // const user = await User.findById(userId).populate('whatsAppSessions');
-        // if (!user) {
-        //     return errorResponse(res, "User not found", 404, "User not found");
-        // }
-
-        // if (!user.subscriptionPlan) {
-        //     return errorResponse(res, "Subscription to plan before creating session", 400, "Subscription to plan before creating session");
-        // }
-
-        // // check auth device number with plan available number 
-        // if (user.subscriptionPlan.deviceAvailable == user.whatsAppSessions.length){
-        //     return errorResponse(res, "You reach availabe sessions number, Can`t create more session", 400, "You reach availabe sessions number, Can`t create more session");
-        // }
-
         const sessionSecret = "whatsapp.session." + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         const session = {
             name: sessionName,
@@ -51,10 +36,6 @@ exports.startWhatsAppSession = async (req, res) => {
 
         const whatsAppSession = await WhatsAppSession.create(session);
         session['_id'] = whatsAppSession._id;
-
-        // // save session to user
-        // user.whatsAppSessions.push(whatsAppSession._id);
-        // await user.save();
 
         createSession(session).then(() => {
             console.log('Session created successfully');
@@ -126,13 +107,13 @@ exports.terminateWhatsAppSession = async (req, res) => {
 // @header {"x-user-id" : "{{user_id}}", "x-instance-secret" : "{{user_secret}}", "api-secret" : "{{api_secret}}"}
 exports.getLastWhatsAppQrCode = async (req, res) => {
     try {
-        const user = await User.findOne({ instanceSecret: req.headers["x-instance-secret"] });
+        // const user = await User.findOne({ instanceSecret: req.headers["x-instance-secret"] });
 
-        if (!user) {
-            return errorResponse(res, "User not found", 404, "User not found");
-        }
+        // if (!user) {
+        //     return errorResponse(res, "User not found", 404, "User not found");
+        // }
 
-        return successResponse(res, { base64: user.qrCode }, 200, "User found successfully");
+        return successResponse(res, { 'base64': 'user.qrCode' }, 200, "User found successfully");
     } catch (e) {
         return errorResponse(res, e.message, 500, "Failed to find user");
     }
