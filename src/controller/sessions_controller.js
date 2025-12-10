@@ -13,8 +13,6 @@ const path = require('path');
 // @body {"name" : "TestSession"}
 exports.startWhatsAppSession = async (req, res) => {
     const userId = req.headers['x-user-id'];
-
-    console.log(req.body)
     const sessionName = req.body.name.replaceAll(" ", "_");
 
     try {

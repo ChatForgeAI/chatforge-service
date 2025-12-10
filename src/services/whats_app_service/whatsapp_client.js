@@ -259,7 +259,31 @@ async function createSession(session) {
                     msg.message.imageMessage?.caption ||
                     '';
 
-                console.log(`Incoming message from ${from}: ${body}`);
+                try {
+                    console.log(`Send to API ${body}`)
+                    const response = await fetch("http://localhost:3000/v1/messages", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            "sender_phone": from.split('@')[0],
+                            "receiver_id": session.userId,
+                            "message": body
+                        })
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        const aiRes = data.data.ai_response
+                        await client.sendMessage(from, { text: aiRes });
+                    }
+
+                    if (!response.ok) {
+                        logError(`API request failed: ${response.statusText}`);
+                    }
+                } catch (error) {
+                    logError(`Error sending message to API: ${error.message}`);
+                }
             }
         });
 
