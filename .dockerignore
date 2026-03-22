@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.env
+.idea
+.git
+.gitignore
+storage/session
+Dockerfile
+docker-compose.yml
+README.md
+message-provider-api.postman_collection.json

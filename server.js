@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {json, urlencoded} = require("body-parser");
+const { json, urlencoded } = require("body-parser");
 const routs = require("./src/routs/index");
 const env = require("dotenv");
-env.config({path: "./config.env"})
+env.config();
 const dbConnection = require("./src/config/database_config");
 const cors = require("cors");
 const app = express();
@@ -12,7 +12,7 @@ const port = 8000;
 // Middleware setup - remove duplicates
 app.use(cors());
 app.use(json());
-app.use(urlencoded({extended: false}));
+app.use(urlencoded({ extended: false }));
 
 dbConnection();
 

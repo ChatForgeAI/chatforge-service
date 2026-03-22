@@ -260,8 +260,9 @@ async function createSession(session) {
                     '';
 
                 try {
-                    console.log(`Send to API ${body}`)
-                    const response = await fetch("http://localhost:3000/v1/messages", {
+                    const apiUrl = process.env.MESSAGES_API_URL || "http://localhost:3000/v1/messages";
+                    console.log(`Sending to API: ${apiUrl} | message: ${body}`);
+                    const response = await fetch(apiUrl, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -272,7 +273,11 @@ async function createSession(session) {
                             "message": body
                         })
                     });
-                    if (response.ok) {
+
+                    // log response:
+                    logIInfo(`Response from API: ${response.statusText}`);
+
+                    if (response.status === 200 || response.status === 201) {
                         const data = await response.json();
                         const aiRes = data.data.ai_response
                         await client.sendMessage(from, { text: aiRes });
