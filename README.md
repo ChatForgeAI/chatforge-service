@@ -1,6 +1,7 @@
 # 🚀 ChatForge Service
 
-[![Node.js](https://img.shields.io/badge/Node.js-v14+-green.svg)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-v18+-green.svg)](https://nodejs.org/)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED.svg)](https://www.docker.com/)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Baileys-blue.svg)](https://github.com/WhiskeySockets/Baileys)
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
 
@@ -54,12 +55,13 @@
    ```
 
 3. **Configure Environment Variables**:
-   Create a `config.env` file in the root directory:
+   Create a `.env` file in the root directory (or copy and edit the provided example):
    ```env
    DATABASE_URI=your_mongodb_connection_string
    PORT=8000
    API_SECRET=your_secure_api_secret
    MAX_QR_GENERATIONS=30
+   MESSAGES_API_URL=http://localhost:3000/v1/messages
    ```
 
 4. **Start the Service**:
@@ -69,6 +71,77 @@
 
    # Production mode
    npm start
+   ```
+
+---
+
+## 🐳 Run with Docker
+
+### Prerequisites
+
+- **Docker**: v20.10+ ([Install Docker](https://docs.docker.com/get-docker/))
+- **Docker Compose**: v2.x+ (bundled with Docker Desktop; install the plugin for Linux)
+
+### Option 1 — Docker Compose (recommended)
+
+Docker Compose builds the image and starts the container in one command. It automatically reads environment variables from `.env`.
+
+1. **Configure Environment Variables**:
+   Copy the sample values and update them:
+   ```env
+   DATABASE_URI=your_mongodb_connection_string
+   PORT=8000
+   API_SECRET=your_secure_api_secret
+   MAX_QR_GENERATIONS=30
+   MESSAGES_API_URL=http://host.docker.internal:3000/v1/messages
+   ```
+   > **Note for Linux users**: `host.docker.internal` is not available by default, but the provided `docker-compose.yml` already includes `extra_hosts: host.docker.internal:host-gateway` to handle this automatically. If you prefer, you can replace the hostname with your machine's LAN IP instead.
+
+2. **Build and start**:
+   ```bash
+   docker compose up --build -d
+   ```
+
+3. **View logs**:
+   ```bash
+   docker compose logs -f
+   ```
+
+4. **Stop the service**:
+   ```bash
+   docker compose down
+   ```
+
+WhatsApp session data is persisted in the `./storage/session` directory on your host machine via a volume mount.
+
+---
+
+### Option 2 — Docker CLI
+
+1. **Build the image**:
+   ```bash
+   docker build -t chatforge-service .
+   ```
+
+2. **Run the container**:
+   ```bash
+   docker run -d \
+     --name whatsapp_chat_forge \
+     -p 8000:8000 \
+     --env-file .env \
+     -v "$(pwd)/storage/session:/usr/src/app/storage/session" \
+     --restart always \
+     chatforge-service
+   ```
+
+3. **View logs**:
+   ```bash
+   docker logs -f whatsapp_chat_forge
+   ```
+
+4. **Stop and remove the container**:
+   ```bash
+   docker stop whatsapp_chat_forge && docker rm whatsapp_chat_forge
    ```
 
 ---
