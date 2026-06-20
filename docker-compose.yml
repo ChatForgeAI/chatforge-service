@@ -8,4 +8,6 @@ services:
       - .env
     volumes:
       - ./storage/session:/usr/src/app/storage/session
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: always
