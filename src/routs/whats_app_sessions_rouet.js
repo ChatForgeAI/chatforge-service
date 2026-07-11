@@ -6,7 +6,7 @@ const validateApiSecret = require("../middlewere/validate_api_secret");
 
 const {
     getLastWhatsAppQrCode,restartWhatsAppSession,startWhatsAppSession,terminateWhatsAppSession,updateSessionName,
-} = require("../controller/telegram_sessions_controller");
+} = require("../controller/whatsapp_sessions_controller.js");
 
 router.use(validateApiSecret);
 

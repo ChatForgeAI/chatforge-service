@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 const { initClients } = require("../services/whats_app_service/whatsapp_clients_manager");
+const { initClients: telegramInitClients } = require("../services/telegram/telegram_clients_manager");
 
 const dbConnection = () => {
-    console.log("DB URI: ", process.env.DATABASE_URI)
+    const databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/chatforge';
+
+    console.log("DB URI: ", databaseUri)
     mongoose
-        .connect(process.env.DATABASE_URI)
+        .connect(databaseUri)
         .then((conn) => {
             console.log(`Database Connected: ${conn.connection.host}`);
             initClients().then(r => console.log(""))
+            telegramInitClients().then(r => console.log(""))
         })
-        // .catch((err) => {
-        //     console.error(`Database Error: ${err}`);
-        //     process.exit(1);
-        // });
+        .catch((err) => {
+            console.error(`Database Error: ${err.message}`);
+        });
 };
 
 module.exports = dbConnection;
