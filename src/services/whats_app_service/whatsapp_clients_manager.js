@@ -1,5 +1,5 @@
 const { createSession, clientsList } = require('./whatsapp_client.js');
-const WhatsAppSession = require('../../models/whatsaapp_session_model.js');
+const WhatsAppSession = require('../../models/channel_session_model.js');
 const { logIInfo } = require('../../middlewere/logger.js');
 
 
@@ -12,9 +12,10 @@ async function initClients() {
 
 
     const initializationPromises = sessions.map(async (session) => {
-
-        // create session
-        await createSession(session);
+        if (session.whatsappSessionStatus === "ready" || session.whatsappSessionStatus === "authenticated") {
+            // create session
+            await createSession(session);
+        }
     });
 
     await Promise.all(initializationPromises);

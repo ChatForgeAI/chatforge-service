@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { initClients } = require("../services/whats_app_service/clients_manager");
+const { initClients } = require("../services/whats_app_service/whatsapp_clients_manager");
 
 const dbConnection = () => {
     console.log("DB URI: ", process.env.DATABASE_URI)

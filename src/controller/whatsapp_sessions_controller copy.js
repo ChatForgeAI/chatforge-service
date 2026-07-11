@@ -1,5 +1,5 @@
 const { createSession } = require("../services/whats_app_service/whatsapp_client.js");
-const WhatsAppSession = require('../models/whatsaapp_session_model.js');
+const WhatsAppSession = require('../models/channel_session_model.js');
 const errorResponse = require("../utils/response_handel/error_handeler.js");
 const successResponse = require("../utils/response_handel/success_handeler.js");
 const fs = require("fs").promises;

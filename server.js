@@ -7,6 +7,7 @@ env.config();
 const dbConnection = require("./src/config/database_config");
 const cors = require("cors");
 const app = express();
+
 const port = 8000;
 
 // Middleware setup - remove duplicates

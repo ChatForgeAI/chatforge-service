@@ -1,4 +1,4 @@
-const SessionRoutes = require('./sessions_rouet');
+const SessionRoutes = require('./whats_app_sessions_rouet');
 
 const loggerRequest = require('../middlewere/log_request_send');
 

@@ -3,7 +3,7 @@ const { DateTime } = require('luxon');
 const path = require("node:path");
 const { rm } = require("node:fs");
 const pino = require("pino");
-const WhatsAppSession = require("../../models/whatsaapp_session_model.js");
+const WhatsAppSession = require("../../models/channel_session_model.js");
 const { logIInfo, logError } = require('../../middlewere/logger.js');
 
 // Store clients list (similar to your first file structure)
