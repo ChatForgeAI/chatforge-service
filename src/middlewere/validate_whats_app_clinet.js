@@ -13,7 +13,7 @@ const validateWhatsAppSession = async (req, res, next) => {
         }
 
         const session = clientsList.find(
-            (client) => client.instance_id == session_id && client.session_secret == session_secret);
+            (client) => client.session_id.toString() === session_id && client.session_secret === session_secret);
 
         if (!session) {
             return errorResponse(res, "Client not found", 404, "Client not found")

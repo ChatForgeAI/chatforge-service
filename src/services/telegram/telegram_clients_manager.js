@@ -1,18 +1,16 @@
-const createTelegramClient = require('./telegram_client.js');
+const { createTelegramClient } = require('./telegram_client.js');
 const ChannelSession = require('../../models/channel_session_model.js');
 const { logIInfo } = require('../../middlewere/logger.js');
 
 
 async function initClients() {
-    logIInfo('🔃🔃 Start setup clients\n\n');
+    logIInfo('🔃🔃 Start setup Telegram clients\n\n');
 
-    // get all sessions
-    const sessions = await ChannelSession.find();
-    console.log(sessions);
-
+    const sessions = await ChannelSession.find({ telegramBotToken: { $ne: null } });
+    console.log(`Found ${sessions.length} Telegram sessions`);
 
     const initializationPromises = sessions.map(async (session) => {
-        if (session.telegramBotToken && session.telegramBotToken.length > 0) {
+        if (session.telegramBotStatus === "ready") {
             await createTelegramClient(session);
         }
     });

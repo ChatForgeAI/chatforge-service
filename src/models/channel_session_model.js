@@ -29,6 +29,16 @@ const channelSchema = new mongoose.Schema({
         required: false,
         default: null
     },
+    telegramBotMode: {
+        type: String,
+        enum: ["polling", "webhook"],
+        default: "polling"
+    },
+    telegramBotStatus: {
+        type: String,
+        enum: ["initialize", "ready", "stopped", "error"],
+        default: "initialize"
+    },
     createdAt: {
         type: Date,
         default: Date.now

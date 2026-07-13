@@ -3,6 +3,10 @@ const router = express.Router();
 exports.router = router;
 const validateClient = require("../middlewere/validate_whats_app_clinet");
 const validateApiSecret = require("../middlewere/validate_api_secret");
+const { sessionCreationLimiter } = require("../middlewere/rate_limiter");
+const {
+    validateStartWhatsAppSession, validateTerminateSession, validateUpdateSessionName
+} = require("../middlewere/validate.js");
 
 const {
     getLastWhatsAppQrCode,restartWhatsAppSession,startWhatsAppSession,terminateWhatsAppSession,updateSessionName,
@@ -10,12 +14,12 @@ const {
 
 router.use(validateApiSecret);
 
-// session routs
+// session routes
 router.route("/get-last-qr-code").get(validateClient, getLastWhatsAppQrCode);
 router.route("/restart-whatsapp-session").post(validateClient, restartWhatsAppSession);
-router.route("/start-whatsapp-session").post(startWhatsAppSession);
-router.route("/terminate-whatsapp-session").post(terminateWhatsAppSession);
-router.route("/update-session-name").post(updateSessionName);
+router.route("/start-whatsapp-session").post(sessionCreationLimiter, validateStartWhatsAppSession, startWhatsAppSession);
+router.route("/terminate-whatsapp-session").post(validateTerminateSession, terminateWhatsAppSession);
+router.route("/update-session-name").post(validateUpdateSessionName, updateSessionName);
 router.route("/qr").get(getLastWhatsAppQrCode);
 
 

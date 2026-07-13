@@ -8,10 +8,22 @@ const dbConnection = () => {
     console.log("DB URI: ", databaseUri)
     mongoose
         .connect(databaseUri)
-        .then((conn) => {
+        .then(async (conn) => {
             console.log(`Database Connected: ${conn.connection.host}`);
-            initClients().then(r => console.log(""))
-            telegramInitClients().then(r => console.log(""))
+
+            try {
+                await initClients();
+                console.log('WhatsApp clients initialized');
+            } catch (e) {
+                console.error('WhatsApp clients init error:', e.message);
+            }
+
+            try {
+                await telegramInitClients();
+                console.log('Telegram clients initialized');
+            } catch (e) {
+                console.error('Telegram clients init error:', e.message);
+            }
         })
         .catch((err) => {
             console.error(`Database Error: ${err.message}`);

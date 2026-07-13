@@ -101,19 +101,29 @@ exports.terminateWhatsAppSession = async (req, res) => {
 };
 
 // @desc get last WhatsApp QR code
-// @route get /session/qr
-// @header {"x-user-id" : "{{user_id}}", "x-instance-secret" : "{{user_secret}}", "api-secret" : "{{api_secret}}"}
+// @route get /session/qr?session_id=...
+// @header {"x-user-id" : "{{user_id}}", "api-secret" : "{{api_secret}}"}
 exports.getLastWhatsAppQrCode = async (req, res) => {
     try {
-        // const user = await User.findOne({ instanceSecret: req.headers["x-instance-secret"] });
+        const { session_id } = req.query;
 
-        // if (!user) {
-        //     return errorResponse(res, "User not found", 404, "User not found");
-        // }
+        if (!session_id) {
+            return errorResponse(res, "session_id is required", 400, "session_id is required");
+        }
 
-        return successResponse(res, { 'base64': 'user.qrCode' }, 200, "User found successfully");
+        const session = await WhatsAppSession.findById(session_id);
+        if (!session) {
+            return successResponse(res, null, 404, "Session not found");
+        }
+
+        return successResponse(res, {
+            session_id: session._id,
+            name: session.name,
+            qr_code: session.whatsappQrCode,
+            status: session.whatsappSessionStatus,
+        }, 200, "QR code retrieved successfully");
     } catch (e) {
-        return errorResponse(res, e.message, 500, "Failed to find user");
+        return errorResponse(res, e.message, 500, "Failed to get QR code");
     }
 };
 
