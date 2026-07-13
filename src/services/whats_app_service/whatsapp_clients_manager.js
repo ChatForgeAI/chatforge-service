@@ -1,24 +1,23 @@
 const { createSession, clientsList } = require('./whatsapp_client.js');
-const WhatsAppSession = require('../../models/channel_session_model.js');
+const AppDataSource = require('../../config/data-source');
+const ChannelSession = require('../../entities/channel_session.entity');
 const { logIInfo } = require('../../middlewere/logger.js');
 
+const sessionRepo = () => AppDataSource.getRepository(ChannelSession);
 
 async function initClients() {
-    logIInfo('🔃🔃 Start setup clients\n\n');
+  logIInfo('Start setup clients\n\n');
 
-    // get all sessions
-    const sessions = await WhatsAppSession.find();
-    console.log(sessions);
+  const sessions = await sessionRepo().find();
+  console.log(sessions);
 
+  const initializationPromises = sessions.map(async (session) => {
+    if (session.whatsappSessionStatus === 'ready' || session.whatsappSessionStatus === 'authenticated') {
+      await createSession(session);
+    }
+  });
 
-    const initializationPromises = sessions.map(async (session) => {
-        if (session.whatsappSessionStatus === "ready" || session.whatsappSessionStatus === "authenticated") {
-            // create session
-            await createSession(session);
-        }
-    });
-
-    await Promise.all(initializationPromises);
+  await Promise.all(initializationPromises);
 }
 
 module.exports = { initClients, clientsList };
